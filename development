@@ -1,0 +1,20 @@
+public class AccountTriggerHandler
+
+public static void updateRating(list<Account>accList){
+
+       for(Account acc : accList){
+
+        if(acc.industry != Null && acc.industry == 'Media'){
+     
+            acc.Rating = 'Hot';
+      }
+   }
+}
+
+trigger Account Trigger on Account(Before insert){
+
+     if(trigger.isinsert && trigger.isbefore){
+
+     AccountTriggerHandler.updateRating(Trigger.New);
+ }
+}     
